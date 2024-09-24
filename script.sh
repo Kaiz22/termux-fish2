@@ -13,7 +13,7 @@ config="$PREFIX/etc/fish/config.fish"
 # Clear terminal screen
 clear
 
-# Function to install necessary dependencies
+# Function to install necessary dependencies (fastfetch instead of neofetch)
 prerequisite() {
     echo -e "${Green}Installing Dependencies...${Cyan}"
     
@@ -22,7 +22,7 @@ prerequisite() {
         echo -e "${Green}Dependencies are already installed!"
     else
         pkg update -y
-        pkg install -y fish figlet fastfetch
+        pkg install -y fish figlet fastfetch  # Install fastfetch instead of neofetch
         
         # Verify if the installations were successful
         if type -p fish figlet fastfetch &> /dev/null; then
@@ -44,7 +44,7 @@ set -U fish_greeting
 # Clear terminal screen
 clear
 
-# Write custom fish functions to the config file
+# Write custom fish functions to the config file (ensure it adds at the end)
 echo -e "function __fish_command_not_found_handler --on-event fish_command_not_found
     /data/data/com.termux/files/usr/libexec/termux/command-not-found \$argv[1]
 end
@@ -55,7 +55,7 @@ end
 
 # Display banner with figlet
 echo -e $Red
-figlet -f smslant "Termux Fish by kaiser"
+figlet -f smslant "Termux Fish"
 echo -e $Color_Off
 printf '\n'
 
@@ -67,21 +67,25 @@ printf '\n'
 echo -e "${Cyan}*Cleared greeting text of termux*"
 printf '\n'
 
-# Add neofetch to fish config based on user input
-echo -e "${Green}[*]Adding fastfetch to homepage... ${Red}"
+# Replace any existing fastfetch/neofetch line at the end of config.fish
+# This removes any previous occurrence and appends the new fastfetch line
+sed -i '/fastfetch/d' "$config"
+
+# Add fastfetch with Arch Linux logo to fish config based on user input
+echo -e "${Green}[*]Adding fastfetch with Arch Linux logo to homepage... ${Red}"
 printf '\n'
 sleep 2s
 while true; do
-    read -p "Do you want the Android logo in neofetch? (y/n): " yn
+    read -p "Do you want the Arch Linux logo in fastfetch? (y/n): " yn
     case $yn in
-        [Yy]* ) echo "neofetch" >> "$config"; break;;
-        [Nn]* ) echo "neofetch --off" >> "$config"; break;;
+        [Yy]* ) echo "fastfetch --logo arch" >> "$config"; break;;  # Using Fastfetch with Arch Linux logo
+        [Nn]* ) echo "fastfetch" >> "$config"; break;;
         * ) echo "Please answer yes (y) or no (n).";;
     esac
 done
 printf '\n'
 sleep 2s
-echo -e "${Cyan}*Added fastfetch to homepage*"
+echo -e "${Cyan}*Added fastfetch with Arch Linux logo to homepage*"
 printf '\n'
 
 # Set fish as the default shell
@@ -95,4 +99,3 @@ printf '\n'
 
 # Completion message
 echo -e "${Green}Done!\n\nNow restart Termux for the changes to take effect.\n\n"
-s
