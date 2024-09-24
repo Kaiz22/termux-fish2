@@ -11,7 +11,7 @@ The script:
 <br><br>
 <i>All in one command if you don't want to copy paste them one by one:</i>
 ```bash
-pkg update && pkg upgrade -y && pkg install git -y && git clone https://github.com/msn-05/termux-fish.git && cd termux-fish && chmod +x script.sh && ./script.sh
+pkg update && pkg upgrade -y && pkg install git -y && git clone https://github.com/Kaiz22/termux-fish2 && cd termux-fish && chmod +x script.sh && ./script.sh
 ```
 <br><br>
 1)Update termux:
@@ -24,7 +24,7 @@ pkg install git -y
 ```
 3)Clone this repo
 ```bash
-git clone https://github.com/msn-05/termux-fish.git
+git clone https://github.com/Kaiz22/termux-fish2
 ```
 4)Change dir to the repo and give executable permissions to script.sh
 ```bash
