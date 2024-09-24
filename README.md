@@ -4,10 +4,10 @@ This program will (permanently) install fish(<b>f</b>riendly <b>i</b>nteractive 
 For more info check <a href="https://fishshell.com" target="_blank">this</a> out.
 <br>
 New look of termux:
-<img src="Screenshot_3.png">
+<img src="Screenshot_2.png">
 <br><br>
 The script:
-<img src="preview/Screenshot_20210419-131801_Termux.jpg">
+<img src="preview/Screenshot_3.png">
 <br><br>
 <i>All in one command if you don't want to copy paste them one by one:</i>
 ```bash
