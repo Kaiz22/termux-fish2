@@ -48,11 +48,11 @@ echo -e "${Cyan}* Termux greeting removed *${Color_Off}\n"
 # Configure fish shell
 echo -e "${Green}[*] Configuring Fish shell...${Color_Off}"
 
-# Disable fish greeting and create config
+# Write fish configuration (including disabling fish greeting)
+cat > "$config" << 'EOF'
+# Disable fish greeting
 set -U fish_greeting ""
 
-# Write fish configuration
-cat > "$config" << 'EOF'
 # Custom fish functions
 function __fish_command_not_found_handler --on-event fish_command_not_found
     /data/data/com.termux/files/usr/libexec/termux/command-not-found $argv[1]
